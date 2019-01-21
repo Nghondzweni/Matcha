@@ -1,0 +1,73 @@
+<h1>{{ title }}</h1>
+{{#if errors}}
+<div class="alert alert-danger" role="alert">
+    <ul>
+        {{#each errors}}
+        <li>{{ this.msg }}</li>
+        {{/each}}
+    </ul>
+</div>
+{{/if}}
+
+{{#if errors_msg}}
+<div class="alert alert-danger" role="alert">
+    <ul>
+        {{ errors_msg }}
+    </ul>
+</div>
+{{/if}}
+
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <form method="POST" action="/users/registerValidation">
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                            placeholder="Enter email">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Username" name="username">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                    </div>
+                    <div class="col">
+                        <input type="password" class="form-control" id="password2" placeholder="Confirm Password" name="password2">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="First name" name="first_name">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Last name" name="last_name">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputGender">Gender</label>
+                <select id="inputState" class="form-control" name="gender">
+                    <option selected>Choose...</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="ts_&_cs">
+                <label class="form-check-label" for="exampleCheck1">I agree to terms and conditions</label>
+            </div>
+            <button type="submit" class="btn btn-info btn-lg btn-block">Submit</button>
+        </form>
+    </div>
+</div>
