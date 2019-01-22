@@ -9,6 +9,7 @@ var SqlString = require('sqlstring');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
 var expressSession = require('express-session');
+// var nocache = require('nocache')
 
 // var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
@@ -39,22 +40,23 @@ module.exports.db = mysql.createConnection({
 
 // connect
 // db.connect(function (err) {
-//   if (err) {
-//     console.error('error connecting: ' + err.stack);
-//     return;
-//   }
-//   console.log('connected as id ' + db.threadId);
-// });
-
-// view engine setup
-app.engine('hbs', hbs({
-  extname: 'hbs',
-  defaultLayout: 'layout',
-  layoutsDir: __dirname + '/views/layouts'
-}));
-app.set('views', path.join(__dirname, 'views/layouts'));
-app.set('view engine', 'hbs');
-
+  //   if (err) {
+    //     console.error('error connecting: ' + err.stack);
+    //     return;
+    //   }
+    //   console.log('connected as id ' + db.threadId);
+    // });
+    
+    // view engine setup
+    app.engine('hbs', hbs({
+      extname: 'hbs',
+      defaultLayout: 'layout',
+      layoutsDir: __dirname + '/views/layouts'
+    }));
+    app.set('views', path.join(__dirname, 'views/layouts'));
+    app.set('view engine', 'hbs');
+    
+// app.use(nocache())
 app.use(expressSession({secret: 'max', saveUninitialized: false, resave: false}));
 app.use(expressValidator());
 app.use(bodyParser.urlencoded({extended : true}));

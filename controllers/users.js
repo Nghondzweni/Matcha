@@ -9,8 +9,10 @@ module.exports.register = function(req, res){
   {
     title: "Register",
     success: req.session.success,
-    errors: req.session.errors
+    errors: req.session.errors,
+    duplicate_errors: regFunction.export_error
   });
+  regFunction.export_error = null;
   req.session.errors = null;
 }
 
@@ -41,5 +43,7 @@ module.exports.registerValidation = function(req, res){
     gender: req.body.gender
   };
   regFunction.registerFunction(req, res,params);
+  res.redirect('/users/register');
   }
+  res.end();
 }
