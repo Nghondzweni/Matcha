@@ -30,20 +30,21 @@ var usersController = require('./controllers/users');
 
 
 //create sql connection
-var db = mysql.createConnection({
+module.exports.db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '123456',
+  database: 'matcha'
 });
 
 // connect
-db.connect(function (err) {
-  if (err) {
-    console.error('error connecting: ' + err.stack);
-    return;
-  }
-  console.log('connected as id ' + db.threadId);
-});
+// db.connect(function (err) {
+//   if (err) {
+//     console.error('error connecting: ' + err.stack);
+//     return;
+//   }
+//   console.log('connected as id ' + db.threadId);
+// });
 
 // view engine setup
 app.engine('hbs', hbs({
