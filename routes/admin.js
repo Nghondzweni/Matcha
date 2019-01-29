@@ -3,6 +3,7 @@ const router = express.Router();
 var mysql = require('mysql');
 
 
+
 // create database and tables
 
 router.get('/setup', (req, res) => {
@@ -22,7 +23,6 @@ router.get('/setup', (req, res) => {
     console.log('Database "matcha" successfully created');
   });
   create_db.end();
-  
   res.redirect('/admin/create_tables')
   res.end();
 });

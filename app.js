@@ -9,6 +9,7 @@ var SqlString = require('sqlstring');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
 var expressSession = require('express-session');
+var MySQLStore = require('express-mysql-session')(expressSession);
 // var nocache = require('nocache')
 
 // var indexRouter = require('./routes/index');
@@ -26,8 +27,14 @@ var app = express();
 
 
 var usersController = require('./controllers/users');
+var adminController = require('./controllers/admin');
 
-
+//Setup database connection
+module.exports.adminDB = mysql.createConnection({
+  host: '127.0.0.1',
+  user: 'root',
+  password: '123456',
+});
 
 
 //create sql connection
@@ -37,6 +44,31 @@ module.exports.db = mysql.createConnection({
   password: '123456',
   database: 'matcha'
 });
+
+var connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '123456',
+  database: 'matcha'
+});
+
+// module.exports.sessionStore = new MySQLStore({
+//   clearExpired: true,
+//   checkExpirationInterval: 900000,
+//   expiration: 86400000,
+//   createDatabaseTable: true,
+//   connectionLimit: 1,
+//   endConnectionOnClose: true,
+//   charset: 'utf8mb4_bin',
+//   schema: {
+//       tableName: 'sessions',
+//       columnNames: {
+//           session_id: 'session_id',
+//           expires: 'expires',
+//           data: 'data'
+//       }
+//   }}/* session store options */, connection);
+
 
 // connect
 // db.connect(function (err) {
@@ -57,22 +89,42 @@ module.exports.db = mysql.createConnection({
     app.set('view engine', 'hbs');
     
 // app.use(nocache())
-app.use(expressSession({secret: 'max', saveUninitialized: false, resave: false}));
+app.use(expressSession({secret: 'max', store: new MySQLStore({
+  clearExpired: true,
+  checkExpirationInterval: 900000,
+  expiration: 86400000,
+  createDatabaseTable: true,
+  connectionLimit: 1,
+  endConnectionOnClose: true,
+  charset: 'utf8mb4_bin',
+  schema: {
+      tableName: 'sessions',
+      columnNames: {
+          session_id: 'session_id',
+          expires: 'expires',
+          data: 'data'
+      }
+  }}/* session store options */, connection)
+, saveUninitialized: false, resave: false}));
 app.use(expressValidator());
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({
   extended: false
+   
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 /* ===============================
 -   GETS
 ================================*/
 
 app.get("/users/register", usersController.register);
+app.get("/users/login", usersController.login);
+app.get("/admin/setup", adminController.setup);
 
 
 /* ===============================
@@ -80,6 +132,7 @@ app.get("/users/register", usersController.register);
 ================================*/
 
 app.post("/users/registerValidation", usersController.registerValidation);
+app.post("/users/loginValidation", usersController.loginValidation);
 
 // app.use('/', indexRouter); //mount index route at / path
 // app.use('/users', usersRouter);

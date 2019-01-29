@@ -1,19 +1,18 @@
-// var mysql = require('mysql');
-// var expressValidator = require('express-validator');
-var regFunction = require('../public/javascripts/user_functions');
-// var express = require('express');
-// var ssn;
+
+var userFunctions = require('../public/javascripts/user_functions');
+const db_connect = require('../app');
 
 module.exports.register = function(req, res){
   res.render("register", 
   {
-    title: "Register",
+    title: "Registration",
     success: req.session.success,
     errors: req.session.errors,
-    duplicate_errors: regFunction.export_error
+    duplicate_errors: req.session.error_msg 
   });
-  regFunction.export_error = null;
+  req.session.error_msg  = null;
   req.session.errors = null;
+  req.session.success = null;
 }
 
 module.exports.registerValidation = function(req, res){
@@ -33,7 +32,9 @@ module.exports.registerValidation = function(req, res){
     req.session.errors = errors;
     req.session.success = false;
     res.redirect('/users/register');
-  } else {
+  } 
+  else 
+  {
     var params = {
     email: req.body.email,
     username: req.body.username,
@@ -42,8 +43,50 @@ module.exports.registerValidation = function(req, res){
     last_name: req.body.last_name,
     gender: req.body.gender
   };
-  regFunction.registerFunction(req, res,params);
-  res.redirect('/users/register');
+  userFunctions.registerFunction(req, res,params);
   }
-  res.end();
+}
+
+module.exports.login = function(req, res){
+  res.render("login", 
+  {
+    title: "Login",
+    success: req.session.success,
+    errors: req.session.errors,
+    username : req.session.username
+  });
+  req.session.success = null;
+  req.session.errors = null;
+  req.session.username = null;
+}
+
+module.exports.loginValidation = function(req, res){
+  req.checkBody('email', 'Email is required.').notEmpty();
+  req.checkBody('email', 'Email is not valid').isEmail();
+  req.checkBody('password', 'Password is required').notEmpty();
+
+  
+  // req.session.username1 = 'Tsundzukani1';
+
+  // console.log(req.session.username);
+
+  var params = {
+    email: req.body.email,
+    password: req.body.password
+  };
+ 
+
+  var errors = req.validationErrors();
+  if (errors) 
+  {
+    req.session.errors = errors;
+    req.session.success = null;
+    res.redirect('/users/register');
+  }
+  else
+  {
+    userFunctions.loginFunction(req, res, params);
+  }
+  // console.log(req.session);
+  // console.log("outside function\n");
 }
