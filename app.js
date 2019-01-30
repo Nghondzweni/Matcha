@@ -28,6 +28,9 @@ var app = express();
 
 var usersController = require('./controllers/users');
 var adminController = require('./controllers/admin');
+var userSettingsController = require('./controllers/userSettings');
+var homeController = require('./controllers/home');
+
 
 //Setup database connection
 module.exports.adminDB = mysql.createConnection({
@@ -89,7 +92,7 @@ var connection = mysql.createConnection({
     app.set('view engine', 'hbs');
     
 // app.use(nocache())
-app.use(expressSession({secret: 'max', store: new MySQLStore({
+app.use(expressSession({secret: 'max', store: module.exports.sessionStore = new MySQLStore({
   clearExpired: true,
   checkExpirationInterval: 900000,
   expiration: 86400000,
@@ -125,6 +128,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get("/users/register", usersController.register);
 app.get("/users/login", usersController.login);
 app.get("/admin/setup", adminController.setup);
+app.get("/users/settings",userSettingsController.modifyInfo);
+app.get("/users/home", homeController.home);
+app.get("/users/logout", usersController.logout);
 
 
 /* ===============================

@@ -65,17 +65,11 @@ module.exports.loginValidation = function(req, res){
   req.checkBody('email', 'Email is not valid').isEmail();
   req.checkBody('password', 'Password is required').notEmpty();
 
-  
-  // req.session.username1 = 'Tsundzukani1';
-
-  // console.log(req.session.username);
-
   var params = {
     email: req.body.email,
     password: req.body.password
   };
  
-
   var errors = req.validationErrors();
   if (errors) 
   {
@@ -87,6 +81,9 @@ module.exports.loginValidation = function(req, res){
   {
     userFunctions.loginFunction(req, res, params);
   }
-  // console.log(req.session);
-  // console.log("outside function\n");
+}
+
+module.exports.logout = function (req, res)
+{
+  userFunctions.logoutFunction(req, res);
 }

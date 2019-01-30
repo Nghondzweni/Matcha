@@ -20,13 +20,7 @@ module.exports.registerFunction = function registerFunction(req, res, params)
           {
             req.session.error_msg = "username already exists";
           }
-          res.render("register", 
-          {
-            title: "Registration",
-            success: req.session.success,
-            errors: req.session.errors,
-            duplicate_errors: req.session.error_msg 
-          });
+          res.redirect("register")
       }
       else
       {
@@ -49,7 +43,6 @@ module.exports.registerFunction = function registerFunction(req, res, params)
 
 module.exports.loginFunction = function loginFunction(req, res, params)
 {
-  req.session.username = null;
   var check = "SELECT * FROM `users` WHERE email = '" + params.email +"' AND password = '" + params.password + "'"
   db_connect.db.query(check, function(error, results) {
     if (error) {
@@ -59,23 +52,42 @@ module.exports.loginFunction = function loginFunction(req, res, params)
     }
     if(results[0])
     {
-      console.log("success");
-      // req.session.destroy();
-      req.session.username = "Tsundzukani5";
-      // req.session.lastname = "Nghondweni";
+      req.session.user_id = results[0].user_id;
+      req.session.username = results[0].username;
+      req.session.email = results[0].email;
+      req.session.first_name = results[0].first_name;
+      req.session.last_name = results[0].last_name;
+
+
       console.log(req.session);
       // console.log("inside function\n");
-      res.render("home", 
-      {
-        title: "Home",
-        success: req.session.success,
-        errors: req.session.errors,
-        username : req.session.username 
-      });
+      // res.render("home", 
+      // {
+      //   title: "Home",
+      //   success: req.session.success,
+      //   errors: req.session.errors,
+      //   user_id: req.session.user_id,
+      //   username : req.session.username,
+      //   email : req.session.email,
+      //   first_name : req.session.first_name,
+      //   last_name : req.session.last_name
+      // });
+      res.redirect("home");
     }
     else
     {
       console.log("nothing");
     }
   })
+}
+
+module.exports.logoutFunction = function logoutFunction(req, res)
+{
+  if(req.session.user_id)
+  {
+    // var check = "DELETE FROM `sessions` WHERE  = '" + params.email +"' AND password = '" + params.password + "'"
+    db_connect.sessionStore.close();
+    console.log('session destroyed');
+  }
+  res.redirect("/users/home");
 }
