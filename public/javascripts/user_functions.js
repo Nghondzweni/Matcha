@@ -75,7 +75,7 @@ module.exports.loginFunction = function loginFunction(req, res, params)
     }
     else
     {
-      
+      console.log("nothing");
     }
   })
 }
