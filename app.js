@@ -139,6 +139,7 @@ app.get("/users/logout", usersController.logout);
 
 app.post("/users/registerValidation", usersController.registerValidation);
 app.post("/users/loginValidation", usersController.loginValidation);
+app.post("/users/settings/executeModifyInfo", userSettingsController.executeModifyInfo);
 
 // app.use('/', indexRouter); //mount index route at / path
 // app.use('/users', usersRouter);

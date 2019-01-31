@@ -85,8 +85,7 @@ module.exports.logoutFunction = function logoutFunction(req, res)
 {
   if(req.session.user_id)
   {
-    // var check = "DELETE FROM `sessions` WHERE  = '" + params.email +"' AND password = '" + params.password + "'"
-    db_connect.sessionStore.close();
+    req.session.destroy();
     console.log('session destroyed');
   }
   res.redirect("/users/home");

@@ -1,4 +1,4 @@
-var userFunctions = require('../public/javascripts/user_functions');
+var userFunctions = require('../public/javascripts/user_details_modification');
 
 module.exports.modifyInfo = function(req, res){
 
@@ -12,4 +12,14 @@ module.exports.modifyInfo = function(req, res){
   req.session.error_msg  = null;
   req.session.errors = null;
   req.session.success = null;
+}
+
+module.exports.executeModifyInfo = function(req, res){
+  var params = {
+    username : req.body.username,
+    email : req.body.email,
+    first_name : req.body.first_name,
+    last_name : req.body.last_name
+  }
+  userFunctions.executeModifyInfo(req, res, params);
 }
