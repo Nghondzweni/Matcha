@@ -58,25 +58,11 @@ module.exports.loginFunction = function loginFunction(req, res, params)
       req.session.first_name = results[0].first_name;
       req.session.last_name = results[0].last_name;
 
-
-      console.log(req.session);
-      // console.log("inside function\n");
-      // res.render("home", 
-      // {
-      //   title: "Home",
-      //   success: req.session.success,
-      //   errors: req.session.errors,
-      //   user_id: req.session.user_id,
-      //   username : req.session.username,
-      //   email : req.session.email,
-      //   first_name : req.session.first_name,
-      //   last_name : req.session.last_name
-      // });
       res.redirect("home");
     }
     else
     {
-      console.log("nothing");
+      res.render("login", {error_msg: "Incorrect login information entered. Please try again"});
     }
   })
 }

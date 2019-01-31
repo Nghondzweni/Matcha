@@ -25,9 +25,10 @@ module.exports.executeModifyInfo = function(req, res, params)
               }
         })
     }
+
     if(params.password)
     {
-        var sql = "UPDATE `users` SET password = '" + params.password + "' WHERE user_id = '" + req.session.user_id + "'"
+        var sql = "UPDATE `users` SET first_name = '" + params.password+ "' WHERE user_id = '" + req.session.user_id + "'"
         db_connect.db.query(sql, function(error, results){
             if (error) {
                 console.log(error);
@@ -36,6 +37,7 @@ module.exports.executeModifyInfo = function(req, res, params)
               }
         })
     }
+
     if(params.first_name)
     {
         var sql = "UPDATE `users` SET first_name = '" + params.first_name + "' WHERE user_id = '" + req.session.user_id + "'"
