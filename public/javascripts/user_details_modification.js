@@ -3,6 +3,7 @@ const db_connect = require('../../app');
 module.exports.executeModifyInfo = function(req, res, params)
 {
     req.session.error_msg = null;
+    console.log(params);
     if(params.username)
     {
         var sql = "UPDATE `users` SET username = '" + params.username + "' WHERE user_id = '" + req.session.user_id + "'"
@@ -28,7 +29,7 @@ module.exports.executeModifyInfo = function(req, res, params)
 
     if(params.password)
     {
-        var sql = "UPDATE `users` SET first_name = '" + params.password+ "' WHERE user_id = '" + req.session.user_id + "'"
+        var sql = "UPDATE `users` SET password = '" + params.password+ "' WHERE user_id = '" + req.session.user_id + "'"
         db_connect.db.query(sql, function(error, results){
             if (error) {
                 console.log(error);

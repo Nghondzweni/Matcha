@@ -18,7 +18,7 @@ module.exports.executeModifyInfo = function(req, res){
   var params = {
     username : req.body.username,
     email : req.body.email,
-    username : req.body.password,
+    password : req.body.password,
     first_name : req.body.first_name,
     last_name : req.body.last_name
   }
