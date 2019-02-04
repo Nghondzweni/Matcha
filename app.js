@@ -131,6 +131,7 @@ app.get("/admin/setup", adminController.setup);
 app.get("/users/settings",userSettingsController.modifyInfo);
 app.get("/users/home", homeController.home);
 app.get("/users/logout", usersController.logout);
+app.get("/users//logout", usersController.logout);
 
 
 /* ===============================
