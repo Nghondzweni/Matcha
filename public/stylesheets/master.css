@@ -1,0 +1,597 @@
+/*
+pink: #F0005E
+blue: #00B7FF
+dark: #203139
+*/
+
+/*=================
+    - RESET -
+=================*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'PT Sans', sans-serif;;
+    color: #203139;
+	 border: none;
+	 outline: none;
+}
+
+body
+{
+	background: #fcfcfc;
+}
+a {
+    text-decoration: none;
+	cursor: pointer;
+}
+
+ul
+{
+    list-style: none;
+    list-style-position: inside
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    font-family: 'PT Sans', sans-serif;
+	 font-weight: 700;
+}
+
+button,
+input[type="submit"]
+{
+    border: none;
+    background: none;
+}
+
+/*=================
+    - CLASSES -
+=================*/
+
+.bordered
+{
+    border: 1px solid lightgray;
+}
+
+.shadow
+{
+    box-shadow: 0 1px 2px lightgray;
+}
+
+
+/*=================
+    - TABLES -
+=================*/
+table
+{
+    border-collapse: collapse;
+}
+
+td,
+th
+{
+    padding: 7.5px 15px;
+}
+
+table tr:not(:last-child)
+{
+    /* border-bottom: 1px solid lightgray; */
+}
+table tr th
+{
+    background: lightgray;
+}
+table.bordered td
+{
+    border: 1px solid lightgray;
+}
+
+.striped-even tr:nth-child(even) td,
+.striped-even li:nth-child(even)
+{
+    background: lightgray;
+}
+
+.striped-odd tr:nth-child(odd) td,
+.striped-odd li:nth-child(odd)
+{
+    background: lightgray;
+}
+
+/*=================
+    - BUTTONS -
+=================*/
+
+.btn
+{
+    display: inline-block;
+    padding: 10px 25px;
+    border: 2px solid ;
+    text-transform: uppercase;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn.shallow
+{
+    border: 2px solid #F0005E;
+}
+
+.btn.fill
+{
+    background: #F0005E;
+	color: white !important;
+}
+
+.btn:hover
+{
+	cursor: pointer;
+}
+
+/*=================
+    - INPUTS -
+=================*/
+form
+{
+   width: 100%;
+	max-width: 500px;
+	padding: 50px 25px;
+	background: rgba(255,255,255, .9);
+}
+
+form h2
+{
+	text-align: center;
+	font-size: 2.2em;
+	margin-bottom: 50px;
+	color: #F0005E;
+}
+
+select
+{
+	padding: 5px 10px;
+	display: inline-block;
+	margin-bottom: 20px;
+	font-size: 16px;
+}
+
+.input
+{
+    width: 100%;
+	 font-size: 1.1em;
+    padding: 10px 15px;
+    margin: 10px 0;
+    text-align: left;
+	 border: 1px solid #F0005E;
+	 background: none;
+	 color: #474747;
+}
+
+.clearfix::after,
+.container::after,
+.row::after,
+.row::after
+{
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+    float: none;
+}
+.container
+{
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+/*=================
+    - LISTS -
+=================*/
+
+.list
+{
+    display: inline-block;
+    border-radius: 3px;
+    margin: 0 15px;
+}
+
+.list.full
+{
+    display: block;
+}
+
+.list.bordered li
+{
+    border-bottom: 1px solid lightgray;
+}
+.list li
+{
+    padding: 10px 20px;
+}
+
+/*=================
+    - IMG -
+=================*/
+img
+{
+    width: 100%;
+    height: auto;
+}
+
+img.bordered
+{
+    border: 5px;
+    box-shadow: 0px 0px 3px lightgray;
+}
+
+img.rounded
+{
+	border-radius: 50%;
+}
+
+/*=================
+    - MESSAGE BOX -
+=================*/
+.message-box
+{
+	border: 2px solid;
+	padding: 15px;
+	border-radius: 5px;
+	line-height: 1.5em;
+	max-width: 450px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 1.05em;
+}
+.message-box.danger
+{
+	border-color: #e8222b;
+	background: #f7636a;
+	color: #fff;
+}
+
+.message-box.danger ul li
+{
+	color: #fff;
+}
+
+/*=================
+    - MENU -
+=================*/
+
+.cover
+{
+	display: block;
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	background: rgba(0,0,0,.8);
+	z-index: 10000;
+	display: none;
+}
+
+#image_wrapper
+{
+	width: 100%;
+	max-width: 700px;
+	min-height: 400px;
+	height: auto;
+	background: white;
+	margin: 50px auto;
+	box-shadow: 0px 1px 3px rgba(0,0,0,.9);
+	padding: 20px 0;
+}
+
+#image_wrapper .top-icons
+{
+	margin: 8px;
+	text-align: right;
+}
+
+#image_wrapper .top-icons i
+{
+	margin: 5px;
+	margin-bottom: 10px;
+	font-size: 1.3em;
+	cursor: pointer;
+	color: red;
+}
+
+#img_preview
+{
+	display: block;
+	width: 120px;
+	height: 120px;
+	margin-left: 10px;
+	margin-bottom: 20px;
+	background: #f2f2f2;
+	border: 2px dashed lightgray;
+	float: left;
+}
+#demo
+{
+	width: 80% !important;
+	float: left;;
+}
+#image_wrapper .upload_img
+{
+	display: none;
+}
+
+#image_wrapper .controls
+{
+	text-align: center;
+}
+#save
+{
+	border-width:  4px;
+}
+
+#image_wrapper .controls .btn
+{
+	border-width: 1px;
+	font-weight: normal;
+	font-size: .8em;
+	width: 120px;
+	margin-bottom: 5px;
+}
+
+
+#demo{
+	width: 100%;
+	height: 100%;
+}
+
+#demo img.cr-image
+{
+	height: 100% !important;
+	width: auto;
+}
+header
+{
+	background: #ffff;
+	height: 87px;
+}
+
+nav
+{
+	display: inline-block;
+	height: 100%;
+	float: right;
+	position: relative;
+	top: 15px;
+}
+nav > ul li
+{
+	float: left;
+	margin: 0 5px;
+}
+
+nav > ul li a
+{
+	display: block;
+	padding: 10px 15px;
+	font-size: 1.2em;
+	font-weight: 500;
+	position: relative;
+
+}
+
+nav > ul li a.active::after
+{
+	content: "";
+	display: block;
+	width: 100% !important;
+	margin-top: 13px;
+	border-bottom: 3px solid #F0005E;
+	position: absolute;
+	left: 0;
+}
+
+.bell
+{
+	position: relative;
+}
+
+nav ul li a.notification i
+{
+	font-size: 1.5em;
+	position: relative;
+}
+
+.bell ul
+{
+	position: absolute;
+	display: block;
+	min-width: 200px;
+	max-width: 300px;
+	background: white;
+	transition: all .3s;
+	overflow: hidden;
+	height: 0;
+}
+
+.bell ul.visible
+{
+	height: auto;
+}
+
+.bell ul li
+{
+	margin: 0;
+	display: block;
+	width: 100%;
+}
+
+.bell ul li a
+{
+	display: block;
+	border-bottom: 1px solid lightgray;
+	font-size: .9em;
+	padding: 7.5px;
+}
+
+.bell ul li a:hover
+{
+	cursor: pointer;
+	background: #F0005E;
+	color: #fff;
+}
+
+.bell ul li:last-child a
+{
+	border: none;
+}
+
+#notificationsCount
+{
+	position: absolute;
+	font-size: 1.2em;
+	font-weight: bold;
+	top: 3px;
+	right: 3px;
+	color: #F0005E
+}
+
+.logo
+{
+	height: 100%;
+	display: inline-block;;
+	font-size: 2.0em;
+}
+
+.logo i,
+#about-section h2 i
+{
+	background: #F0005E;
+	color: #ffffff;
+	padding: 15px 13px 10px;
+	border-radius: 50%;
+}
+
+.logo a,
+#about-section h2 span
+{
+	font-family: 'Dancing Script', cursive;
+	letter-spacing: 10px;
+	color: #F0005E;
+}
+
+ul li lable
+{
+	display: block;
+}
+
+.snap
+{
+	background: #EF3E36 !important;
+}
+
+.snap .icon
+{
+	color: #ffffff;
+}
+
+.user
+{
+	background: #EF3E36;
+	position: relative;
+	top: 3px;
+	display: block;
+	text-align: center;
+	padding: 7px 13px;
+	border-radius: 50%;
+	color: white;
+}
+
+nav a .icon
+{
+	font-size: 1.2em;
+	color: #474747;
+	position: relative;
+	top: 3px;
+	margin-left: 10px;
+}
+
+nav li ul
+{
+	position: relative;
+}
+.drop-down
+{
+	display: inline-block;
+	display: none;
+	position: absolute;
+	right: 0;
+	margin-top: 15px;
+	border-radius: 3px;
+	overflow: hidden;
+	min-width: 200px;
+	background: #ffffff;
+}
+
+nav input[type="checkbox"]
+{
+	display: none;
+}
+
+input[type="checkbox"]:checked + .drop-down
+{
+	display: inline-block;
+
+}
+/*=================
+    - FOOTER -
+=================*/
+main
+{
+	min-height: calc(100vh - 300px);
+}
+
+/*=================
+    - FOOTER -
+=================*/
+footer
+{
+	height: 80px;
+	border-top: 1px solid lightgray;
+}
+
+footer .container
+{
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+footer ul
+{
+	text-align: center;
+	margin-bottom: 20px
+}
+footer ul li
+{
+	display: inline-block;
+}
+
+footer ul li a
+{
+	font-size: .8em;
+	display: block;
+	padding: 10px 5px;
+}
+
+footer ul li a:hover
+{
+	color: #F0005E !important;
+}
+
+footer p
+{
+	text-align: center;
+}

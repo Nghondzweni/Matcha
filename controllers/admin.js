@@ -30,7 +30,6 @@ module.exports.setup = function setup(req, res){
     }
     console.log('Database "matcha" successfully created');
     create_tables();
-    // res.redirect("/");
   });
   res.end();
 };

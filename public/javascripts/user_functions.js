@@ -1,8 +1,10 @@
 const db_connect = require('../../app');
+const mail = require("../../config/nodemailer");
 
 module.exports.registerFunction = function registerFunction(req, res, params)
 {
     req.session.error_msg  = null;
+    let verificationKey = Math.random().toString(36).substring(7);
     var check = "SELECT * FROM `users` WHERE email = '" + params.email +"' OR username = '" + params.username + "'"
     db_connect.db.query(check, function(error, results) {
       if (error) {
@@ -33,6 +35,7 @@ module.exports.registerFunction = function registerFunction(req, res, params)
             res.sendStatus(500);
             return;
           }
+          sendVerificationMail(params, verificationKey);
           req.session.success = 'Successfully Registered!!';
           console.log('User successfully registered');
           res.redirect('/users/login');
@@ -40,6 +43,16 @@ module.exports.registerFunction = function registerFunction(req, res, params)
       }
     });
 };
+
+function sendVerificationMail(params, message) {
+  var subject = "Matcha Profile Verification";
+  mail.transporter.sendMail(mail.helperOptions(params.email, subject, message), (error, info) =>{
+    if(error)
+      console.log(error);
+    console.log("Verification email sent");
+    console.log(info);
+  })
+}
 
 module.exports.loginFunction = function loginFunction(req, res, params)
 {
@@ -74,5 +87,5 @@ module.exports.logoutFunction = function logoutFunction(req, res)
     req.session.destroy();
     console.log('session destroyed');
   }
-  res.redirect("/users/home");
+  res.redirect("/home");
 }

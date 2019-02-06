@@ -8,7 +8,8 @@ module.exports.register = function(req, res){
     title: "Registration",
     success: req.session.success,
     errors: req.session.errors,
-    duplicate_errors: req.session.error_msg 
+    duplicate_errors: req.session.error_msg,
+    css: "register"  
   });
   req.session.error_msg  = null;
   req.session.errors = null;
@@ -75,7 +76,7 @@ module.exports.loginValidation = function(req, res){
   {
     req.session.errors = errors;
     req.session.success = null;
-    res.redirect('/users/register');
+    res.redirect('/register');
   }
   else
   {
@@ -86,4 +87,18 @@ module.exports.loginValidation = function(req, res){
 module.exports.logout = function (req, res)
 {
   userFunctions.logoutFunction(req, res);
+}
+
+module.exports.home = function(req,res){
+  res.render("home", 
+  {
+    title: "Home",
+    success: req.session.success,
+    errors: req.session.errors,
+    user_id: req.session.user_id,
+    username : req.session.username,
+    email : req.session.email,
+    first_name : req.session.first_name,
+    last_name : req.session.last_name
+  });
 }

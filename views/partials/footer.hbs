@@ -1,12 +1,30 @@
-<footer class="footer">
-
-    <div class="container">
-        <div class="col-sm-12  text-center">
-            <div class= "social-icon">
-                <a href=""><i  class="fa fa-facebook"></i></a>
-            </div>
-        </div>
-    </div>
-
+<footer>
+	<div class="container">
+		<ul>
+			{{#if isAuthenticated}}
+				<li><a href="/home">HOME</a></li>|
+				<li><a href="/profile">MY PROFILE</a></li>|
+				<li><a href="/inbox">INBOX</a></li>|
+				<li><a href="/logout">LOGOUT</a></li>|
+			{{else}}
+				<li><a href="">HOME</a></li>|
+				<li><a href="">ABOUT</a></li>|
+				<li><a href="">TESTIMONIALS</a></li>
+			{{/if}}
+		</ul>
+		<p>Matcha Dating Site &copy 2018 All rights reserved</p>
+	</div>
 </footer>
+<script src="/js/jquery-3.3.1.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.js"></script>
+
+<script src="/js/main.js"></script>
+{{#each js}}
+	<script src="/js/{{this}}.js"></script>
+{{/each}}
+<script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+</body>
+</html>
 

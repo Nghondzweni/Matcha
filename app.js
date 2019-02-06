@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
 var expressSession = require('express-session');
 var MySQLStore = require('express-mysql-session')(expressSession);
+// var transporter = require('nodemailer'); 
 // var nocache = require('nocache')
 
 // var indexRouter = require('./routes/index');
@@ -29,7 +30,6 @@ var app = express();
 var usersController = require('./controllers/users');
 var adminController = require('./controllers/admin');
 var userSettingsController = require('./controllers/userSettings');
-var homeController = require('./controllers/home');
 
 
 //Setup database connection
@@ -125,22 +125,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 -   GETS
 ================================*/
 
-app.get("/users/register", usersController.register);
-app.get("/users/login", usersController.login);
-app.get("/admin/setup", adminController.setup);
-app.get("/users/settings",userSettingsController.modifyInfo);
-app.get("/users/home", homeController.home);
-app.get("/users/logout", usersController.logout);
-app.get("/users//logout", usersController.logout);
+app.get("/register", usersController.register);
+app.get("/login", usersController.login);
+app.get("/setup", adminController.setup);
+app.get("/settings",userSettingsController.modifyInfo);
+app.get("/home", usersController.home);
+app.get("/logout", usersController.logout);
 
 
 /* ===============================
 -   POSTS
 ================================*/
 
-app.post("/users/registerValidation", usersController.registerValidation);
-app.post("/users/loginValidation", usersController.loginValidation);
-app.post("/users/settings/executeModifyInfo", userSettingsController.executeModifyInfo);
+app.post("/registerValidation", usersController.registerValidation);
+app.post("/loginValidation", usersController.loginValidation);
+app.post("/settings/executeModifyInfo", userSettingsController.executeModifyInfo);
 
 // app.use('/', indexRouter); //mount index route at / path
 // app.use('/users', usersRouter);

@@ -4,14 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Dancing+Script|PT+Sans:400,700" rel="stylesheet">
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css">
-	<link rel="stylesheet" href="/css/master.css">
-	{{#each css}}
-		<link rel="stylesheet" href="/css/{{this}}.css">
-	{{/each}}
+	<link rel="stylesheet" href="/stylesheets/home.css">
+	<link rel="stylesheet" href="/stylesheets/master.css">
+
 </head>
 
 <body>
@@ -29,20 +26,20 @@
 			<input type="file" name="img" value="" class="upload_img">
 			<div id="demo"></div>
 			<img src="" alt="" id="img_preview">
-			<div class="controls">
-				<button type="button" class="btn upload" id="upload">upload</button>
-				<button type="button" class="btn crop" id="crop">crop</button>
-				<button type="button" class="btn fill" id="save">save</button>
-			</div>
-
 		</div>
 	</div>
 	<header>
 		<div class="container">
-			<div class="logo"><i class="fas fa-heart"></i><a href="/">Matcha</a></div>
+			<div class="logo"><i class="far fa-grin-hearts"></i><a href="/">Matcha</a></div>
 			<nav>
 					<ul>
 						{{#if isAuthenticated}}
+							<li class="bell">
+								<a href="" class="notification"><i class="fas fa-bell"></i></a>
+								<span id="notificationsCount"></span>
+								<ul class="clearfix shadow"></ul>
+							</li>
+							<li></li>
 							<li><a href="/home" class="active">Home</a></li>
 							<li><a href="/profile" class="">My profile</a></li>
 							<li><a href="/inbox" class="">Inbox</a></li>
@@ -57,4 +54,3 @@
 			</nav>
 		</div>
 	</header>
-	<main>
