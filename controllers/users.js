@@ -102,3 +102,14 @@ module.exports.home = function(req,res){
     last_name : req.session.last_name
   });
 }
+
+module.exports.verificationFunction = function(req, res) {
+  console.log(req.query.type);
+  
+  if(req.params.type == "accountVerification")
+  {
+    userFunctions.accountVerification(req, res, req.params.key);
+  }
+  else
+    console.log("bad parameter");
+}

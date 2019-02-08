@@ -7,7 +7,7 @@ function create_tables(){
   `password` VARCHAR (255) NOT NULL,`first_name` VARCHAR (30) NOT NULL,\
   `last_name` VARCHAR (30) NOT NULL, `gender` ENUM('Male', 'Female') NOT NULL,\
   `verified` BOOLEAN NOT NULL DEFAULT 0,`profile_img_url` VARCHAR (255) DEFAULT 'images/default.png',\
-  `biography` VARCHAR (225)\
+  `token` VARCHAR (50) NOT NULL, `biography` VARCHAR (225)\
   )";
 
   db_connect.db.query(users_sql, function (error) {
@@ -21,6 +21,8 @@ function create_tables(){
 }
 
 module.exports.setup = function setup(req, res){
+  console.log("databases setup");
+  
   let sql = 'CREATE DATABASE IF NOT EXISTS matcha';
   db_connect.adminDB.query(sql, function (error) {
     if (error) {
@@ -28,8 +30,8 @@ module.exports.setup = function setup(req, res){
       res.sendStatus(500);
       return;
     }
+    
     console.log('Database "matcha" successfully created');
     create_tables();
-  });
-  res.end();
+  });  res.end();
 };
