@@ -85,7 +85,6 @@ module.exports.sessionStore = new MySQLStore({
     // });
     
     
-    // app.use(nocache())
     app.use(expressSession({secret: 'max', store: module.exports.sessionStore = new MySQLStore({
       clearExpired: true,
       checkExpirationInterval: 900000,
@@ -125,6 +124,7 @@ module.exports.sessionStore = new MySQLStore({
       app.get("/setup", adminController.setup);
       app.get("/settings",userSettingsController.modifyInfo);
       app.get("/home", usersController.home);
+      app.get("/", usersController.home);
       app.get("/logout", usersController.logout);
       app.get("/verification/:type/:key", usersController.verificationFunction)
       

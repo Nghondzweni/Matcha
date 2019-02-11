@@ -39,7 +39,7 @@ module.exports.registerFunction = function registerFunction(req, res, params)
             return;
           }
           sendVerificationMail(params, verificationKey);
-          req.session.success = 'Successfully Registered!! <br> Please check your emails to verify your account';
+          req.session.success = 'Successfully Registered!! \n Please check your emails to verify your account';
           console.log('User successfully registered');
           res.redirect('/login');
         })
@@ -77,7 +77,8 @@ module.exports.loginFunction = function loginFunction(req, res, params)
     {
       if(results[0].verified == 0)
       {
-        res.render("login", {error_msg: "Your account has not yet been verified. Please check your emails to verify account"});
+        res.render("login", {error_msg: "Your account has not yet been verified. \n Please check your emails to verify account"});
+        return;
       }
       req.session.user_id = results[0].user_id;
       req.session.username = results[0].username;
