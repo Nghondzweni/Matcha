@@ -9,12 +9,15 @@ var SqlString = require('sqlstring');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
 var expressSession = require('express-session');
-var MySQLStore = require('express-mysql-session')(expressSession);
+// var MySQLStore = require('express-mysql-session')(expressSession);
 var mongoose = require('mongoose');
 var setup = require('./controllers/admin');
 const config = require('./config/database');
 const session = require('express-session');
-const MongoSotre = require('connect-mongo')(session)
+const MongoSotre = require('connect-mongo')(session);
+var passport = require ('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var flash = require('connect-flash');
 // var transporter = require('nodemailer'); 
 
 
@@ -47,6 +50,21 @@ app.use(session({
   app.use(express.urlencoded({ extended: false  }));
   app.use(cookieParser());
   app.use(express.static(path.join(__dirname, 'public')));
+
+  //Passport init
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  //Connect Flash
+  app.use(flash());
+
+  //Global Variables for Flash Messages
+  app.use(function(req, res, next){
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    next();
+  })
   
 
   app.use(bodyParser.json());
@@ -78,7 +96,7 @@ app.use(session({
   app.get("/home", usersController.home);
   app.get("/", usersController.home);
   app.get("/logout", usersController.logout);
-  app.get("/verification/:type/:key", usersController.verificationFunction)
+  app.get("/verification/:username/:key", usersController.verificationFunction)
   
   
   /* ===============================
@@ -92,7 +110,7 @@ app.use(session({
   
   // catch 404 and forward to error handler
   app.use(function (req, res, next) {
-    next(createError(404));
+    next(createError(404)); 
   });
   
   // error handler
@@ -107,3 +125,4 @@ app.use(session({
   });
   
   module.exports = app;
+ 

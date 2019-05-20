@@ -1,5 +1,6 @@
 
 var userFunctions = require('../public/javascripts/user_functions');
+var userFunc = require("../public/javascripts/userFunctions")
 const db_connect = require('../app');
 
 module.exports.register = function(req, res){
@@ -14,6 +15,7 @@ module.exports.register = function(req, res){
   req.session.error_msg  = null;
   req.session.errors = null;
   req.session.success = null;
+  req.flash('error_msg', "");
 }
 
 module.exports.registerValidation = function(req, res){
@@ -32,7 +34,7 @@ module.exports.registerValidation = function(req, res){
   if (errors) {
     req.session.errors = errors;
     req.session.success = false;
-    res.redirect('/users/register');
+    res.redirect('/register');
   } 
   else 
   {
@@ -44,7 +46,7 @@ module.exports.registerValidation = function(req, res){
     last_name: req.body.last_name,
     gender: req.body.gender
   };
-  userFunctions.registerFunction(req, res,params);
+  userFunc.registerFunction(req, res,params);
   }
 }
 
@@ -53,14 +55,10 @@ module.exports.login = function(req, res){
   {
     title: "Login",
     success: req.session.success,
-    errors: req.session.errors,
-    username : req.session.username
-  });
-  req.session.success = null;
-  req.session.errors = null;
-  req.session.username = null;
+    errors: req.session.errors
+  })
 }
-
+    
 module.exports.loginValidation = function(req, res){
   req.checkBody('email', 'Email is required.').notEmpty();
   req.checkBody('email', 'Email is not valid').isEmail();
@@ -103,13 +101,14 @@ module.exports.home = function(req,res){
   });
 }
 
-module.exports.verificationFunction = function(req, res) {
-  console.log(req.query.type);
-  
-  if(req.params.type == "accountVerification")
+module.exports.verificationFunction = function(req, res) {  
+  if(req.params.username != null)
   {
-    userFunctions.accountVerification(req, res, req.params.key);
+    userFunc.accountVerification(req, res, req.params.username, req.params.key);
   }
-  else
+  else{
     console.log("bad parameter");
+    req.flash('error_msg', "Verification failed, please contact Tsundzukani");
+    res.redirect("/register");
+  }
 }

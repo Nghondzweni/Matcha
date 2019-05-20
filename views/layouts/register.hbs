@@ -5,14 +5,15 @@
         {{#each errors}}
         <li>{{ this.msg }}</li>
         {{/each}}
+
     </ul>
 </div>
 {{/if}}
 
-{{#if duplicate_errors}}
+{{#if error_msg}}
 <div class="alert alert-danger" role="alert">
     <ul>
-        {{ duplicate_errors }}
+        {{ error_msg }}
     </ul>
 </div>
 {{/if}}
