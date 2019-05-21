@@ -1,5 +1,9 @@
 const mail = require("../../config/nodemailer");
 var User = require("../../models/users");
+var passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
+var app = require('../../app');
+var bcrypt = require('bcryptjs');
+
 
 module.exports.registerFunction = async function (req, res, params){
 
@@ -86,3 +90,48 @@ module.exports.accountVerification = async function accountVerification(req, res
         res.redirect("/register");
     }
   }
+
+module.exports.loginFunction = async function (req, res, params)
+{
+
+    var user = await User.findOne({'username' : params.username});
+    if(user){
+        if(!user.verified)
+        {
+            req.flash('error_msg', "Login failed, your account has not yet been verified. Please check your emails to verify account");
+            res.redirect("/login") 
+        }
+        else{
+        await bcrypt.compare(params.password, user.password, function(err, result){
+            if(result){
+                // passport.serializeUser(function(user, done) {
+                //     done(null, user.id);
+                // });
+                req.flash('success_msg', "Login Successful!!");
+                res.redirect("/home");
+            }
+            else{
+                req.flash('error_msg', "Login failed, wrong credentials. Please try again");
+                res.redirect("/login")
+            }
+        })
+        }
+    }
+    else
+        {
+            req.flash('error_msg', "Login failed, wrong credentials. Please try again");
+            res.redirect("/login") 
+        }
+}
+
+
+
+passport.serializeUser(function(user, done) {
+	done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+	Users.findById(id, function(err, user) {
+		done(err, user);
+	});
+});

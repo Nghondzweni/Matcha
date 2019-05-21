@@ -1,6 +1,6 @@
 
 var userFunctions = require('../public/javascripts/user_functions');
-var userFunc = require("../public/javascripts/userFunctions")
+var userFunc = require("../public/javascripts/userFunctions");
 const db_connect = require('../app');
 
 module.exports.register = function(req, res){
@@ -57,15 +57,17 @@ module.exports.login = function(req, res){
     success: req.session.success,
     errors: req.session.errors
   })
+  req.session.errors = null;
+  req.session.success = null;
+  req.flash('error_msg', "");
 }
     
 module.exports.loginValidation = function(req, res){
-  req.checkBody('email', 'Email is required.').notEmpty();
-  req.checkBody('email', 'Email is not valid').isEmail();
+  req.checkBody('username', 'Username is required.').notEmpty();
   req.checkBody('password', 'Password is required').notEmpty();
 
   var params = {
-    email: req.body.email,
+    username: req.body.username,
     password: req.body.password
   };
  
@@ -74,11 +76,11 @@ module.exports.loginValidation = function(req, res){
   {
     req.session.errors = errors;
     req.session.success = null;
-    res.redirect('/register');
+    res.redirect('/login');
   }
   else
   {
-    userFunctions.loginFunction(req, res, params);
+    userFunc.loginFunction(req, res, params);
   }
 }
 

@@ -7,7 +7,10 @@
 {{#if errors}}
 <div class="alert alert-danger" role="alert">
     <ul>
-        {{ errors }}
+        {{#each errors}}
+        <li>{{ this.msg }}</li>
+        {{/each}}
+
     </ul>
 </div>
 {{/if}}
@@ -21,13 +24,14 @@
 </div>
 {{/if}}
 
+
 <div class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
         <form method="POST" action="/loginValidation">
             <div class="form-group">
                 <div class="form-row">
                     <div class="col">
-                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                        <input type="text" class="form-control" id="username" name="username" "
                             placeholder="Enter email">
                     </div>
                 </div>

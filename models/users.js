@@ -54,4 +54,3 @@ module.exports.createUser = function(newUser, username, email, callback){
         });
     });
 }
-
