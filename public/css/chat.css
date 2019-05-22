@@ -1,0 +1,432 @@
+
+/* main .container
+{
+	position: relative;
+	min-height: 1200px;
+	overflow-x: hidden;
+	padding: 100px 0;
+} */
+
+.menu
+{
+	padding: 10px 0;
+	display: inline-block;
+	position: fixed;
+	left: -157px;
+	top: 250px;
+	z-index: 100000;
+}
+
+.menu ul li
+{
+	width: 200px;
+	margin: 10px !important;
+	font-size: 1.25em;
+	margin: 0 10px;
+	box-shadow: 0 1px 2px lightgray;
+	background: #fff;
+	transition: all .5s;
+}
+
+.menu ul li a
+{
+	display: block;
+	padding: 10px 5px;
+	width: 100%;
+	font-weight: bold;
+}
+
+.menu ul li:hover
+{
+	cursor: pointer;
+	transform: translateX(150px) scale(1.05);
+
+}
+
+.menu li i
+{
+	font-size: 1.3em;
+	border-left: 2px solid;
+	padding-left: 10px;
+	float: right;;
+}
+
+li .fa-heart{
+	color: #F0005E;
+}
+
+li .fa-star
+{
+	color: #ffe82c;
+}
+
+li .fa-eye
+{
+	color: #00B7FF;
+}
+
+
+/*============================
+	- CHATBOX
+============================*/
+#chat
+{
+	display: inline-block;
+	width: 39%;
+	max-width: 500px;
+	height: 100% !important;
+	min-height: calc(1200px - 200px);
+	background: #fff;
+	margin-top: 15px;
+}
+
+#chat-box
+{
+	float: right;
+	height: 100% !important;
+	width: 100%
+}
+
+/*============================
+	- CHATBOX HEADER
+============================*/
+#chat-box .header#header
+{
+	background: #F0005E;
+	padding: 5px 10px;
+	margin-bottom: 15px;
+	color: #fff;
+	height: 50px;
+	max-width: 100%;
+}
+
+#chat-box .header .user-info
+{
+	display: inline-block;
+	min-width: 50%;
+	height: 100%;
+	float: left;
+}
+
+#chat-box .header .user-info img,
+#chat-box .header .user-info strong
+{
+	float: left;
+}
+
+#chat-box .header .user-info strong
+{
+	display: inline-block;
+	position: relative;
+	top: 5px;
+	color: #fff;
+	font-size: 1.1em;
+}
+#chat-box .header .user-info img
+{
+	float: left;
+	height: 100%;
+	width: auto;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+#chat-box .header .icons
+{
+	float: right;
+	margin-right: 10px;
+	position: relative;
+	top: 10px;
+	color: #fff;
+}
+
+#chat-box .header .icons i
+{
+	color: #fff;
+	margin: 0 1.5px
+}
+
+#chat-box .header .icons i:hover
+{
+	cursor: pointer;
+}
+
+/*============================
+	- CHATBOX MESSAGES
+============================*/
+.messages
+{
+	height: calc(calc(1200px - 200px) - 100px);
+	padding: 0 10px;
+}
+
+#chat-box textarea
+{
+	height: 100%;
+	width: 100%;
+	font-size: 1.05em;
+	padding: 10px 10px;
+	resize: none;
+}
+
+.message.me,
+.message.other
+{
+	font-size: .95em;
+	display: block;
+	width: 100% !important;
+	padding: 2.5px 0;
+}
+
+.message p
+{
+	display: inline-block;
+	max-width: 80%;
+	background: #e4e4e4;
+	border-radius: 5px;
+	padding: 5px 10px;
+}
+
+.message.me p,
+.message.me small
+
+{
+	float: right;
+}
+
+.message.me p
+{
+	background: #00B7FF;
+	color: #fff;
+}
+
+.message.me + .message.other
+{
+	margin-top: 10px;
+}
+
+/*============================
+	- CHATBOX TYPING SECTION
+============================*/
+
+#chat-box .text
+{
+	border-top: 1px solid #f2f2f2;
+	padding: 0 10px;
+	height: 50px;
+}
+
+/*============================
+	- USER
+============================*/
+.user
+{
+	background: none;
+	width: 24%;
+	border-radius: 0;
+	float: left;
+
+}
+
+.user img
+{
+	width: 50%;
+	border-radius: 50%;
+}
+
+.user img:hover
+{
+	cursor: pointer;
+}
+
+.user .status span
+{
+	display: inline-block;
+	height: 8px;
+	width: 8px;
+	border-radius: 50%;
+}
+
+.user .status small
+{
+	font-style: italic;
+}
+
+.user .status span.online
+{
+	background: green;
+}
+
+.user .status span.offline
+{
+	background: red;
+}
+
+.user .btn
+{
+	font-size: .7em;
+	font-weight: 400;
+	border-width: 1px;
+	padding: 5px 15px;
+	position: relative;
+	color: #F0005E;
+	border-color: #F0005E;
+	transition: all .5s;
+}
+
+.user .btn:hover
+{
+	background: transparent;
+	color: #F0005E;
+	background: #F0005E;
+	color: white;
+}
+
+/*============================
+	- SEARCH PANEL
+============================*/
+
+#search-panel
+{
+	height: calc(100vh - 87px);
+	width: 400px;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	z-index: 2000000;
+	background: #203139;
+	padding: 20px;
+}
+
+#search-panel input[type="search"]
+{
+	padding: .6em 20px;
+	font-size: 1em;
+	border-radius: 20px;
+	width: 100%;
+	border: 1px solid #F0005E;
+	margin-bottom: 25px;
+}
+
+#search-panel h4
+{
+	color: #f2f2f2;
+	font-size: 1.5em;
+	text-align: center;
+	padding: 15px;
+	font-weight: 400;
+}
+
+#search-panel ul
+{
+	margin-top: 70px;
+}
+
+#search-panel ul li a
+{
+	display: block;
+	color: #f2f2f2;
+	font-size: 1.2em;
+	padding: 15px 15px;
+	padding-bottom: 5px;
+}
+
+#search-panel ul li a i
+{
+	color: #f2f2f2;
+	margin-right: 10px
+}
+
+.box
+{
+	margin: 0 15px 15px;
+}
+
+.box strong
+{
+	color: #f2f2f2;
+	margin-bottom: 15px;
+}
+
+.ui-slider-range
+{
+	background: #F0005E !important;
+}
+
+.ui-slider-handle
+{
+	border-radius: 50% !important;
+	background: #00B7FF !important;
+}
+
+.box div
+{
+	margin: 0 !important;
+}
+
+.range
+{
+	float: right;
+	font-weight: bold;
+	font-size: 1.1em;
+	color: #F0005E;
+}
+
+.range span
+{
+	padding-left: 5px;
+	color: #F0005E;
+}
+
+.btn-search
+{
+	border: none;
+	margin-left: 15px;
+	margin-top: 50px;
+}
+
+#gender
+{
+	margin-left: 15px;
+}
+
+#gender label
+{
+	color: #fff;
+	display: inline-block;
+	padding: 5px;
+	cursor: pointer;
+}
+
+#gender label:nth-child(1)
+{
+	color: #00b7ff;
+}
+
+#gender label:nth-child(2)
+{
+	color: #f0005e;
+}
+
+#gender label:nth-child(3)
+{
+	background: -webkit-linear-gradient(90deg, rgba(0,183,255,1) 0%, rgba(240,0,94,1) 100%);
+	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+}
+
+
+#gender label input
+{
+	margin-right: 8px;
+}
+
+#gender label:not(:last-child)
+{
+	margin-right: 15px;
+}
+
+.fa-venus-mars
+{
+	font: 1.3em;
+}

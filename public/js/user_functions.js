@@ -97,12 +97,9 @@ module.exports.loginFunction = function loginFunction(req, res, params)
 
 module.exports.logoutFunction = function logoutFunction(req, res)
 {
-  if(req.session.user_id)
-  {
-    req.session.destroy();
-    console.log('session destroyed');
-  }
-  res.redirect("/home");
+	req.logout();
+	req.session.destroy();
+	res.redirect("/");
 }
 
 module.exports.accountVerification = function accountVerification(req, res, key){

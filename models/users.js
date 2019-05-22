@@ -30,6 +30,11 @@ var UserSchema = mongoose.Schema({
         enum : ['Male' , 'Female'],
         required : true
     },
+    active:
+    {
+        type: Number,
+        default: 0
+    },
     token : {
         type : String
     },
@@ -50,7 +55,7 @@ module.exports.createUser = function(newUser, username, email, callback){
             // Store hash in your password DB.
             newUser.password = hash;
             newUser.save(callback);
-
+            
         });
     });
 }

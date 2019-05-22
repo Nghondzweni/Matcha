@@ -1,7 +1,8 @@
 
-var userFunctions = require('../public/javascripts/user_functions');
-var userFunc = require("../public/javascripts/userFunctions");
-const db_connect = require('../app');
+var userFunctions = require('../public/js/user_functions');
+var userFunc = require("../public/js/userFunctions");
+var User = require("../models/users");
+
 
 module.exports.register = function(req, res){
   res.render("register", 
@@ -51,15 +52,21 @@ module.exports.registerValidation = function(req, res){
 }
 
 module.exports.login = function(req, res){
-  res.render("login", 
-  {
-    title: "Login",
-    success: req.session.success,
-    errors: req.session.errors
-  })
-  req.session.errors = null;
-  req.session.success = null;
-  req.flash('error_msg', "");
+  if(req.isAuthenticated()){
+    res.redirect("/home");
+  }
+  else{
+    res.render("login", 
+    {
+      title: "Login",
+      success: req.session.success,
+      errors: req.session.errors
+    })
+    req.session.errors = null;
+    req.session.success = null;
+    req.flash('error_msg', "");
+  }
+  
 }
     
 module.exports.loginValidation = function(req, res){
@@ -90,17 +97,21 @@ module.exports.logout = function (req, res)
 }
 
 module.exports.home = function(req,res){
-  res.render("home", 
-  {
+  
+  content =  {
     title: "Home",
-    success: req.session.success,
-    errors: req.session.errors,
-    user_id: req.session.user_id,
-    username : req.session.username,
-    email : req.session.email,
-    first_name : req.session.first_name,
-    last_name : req.session.last_name
-  });
+    css: ["chat"],
+    js: ["search"],
+    isHome : true
+  }
+
+  User.find({}, function(err, users){
+		if (err) throw err;
+
+		content.users = users;
+		res.render("home", content);
+	});
+
 }
 
 module.exports.verificationFunction = function(req, res) {  

@@ -1,11 +1,11 @@
-{{> header }}
-<div>
-    Welcome Home {{ username }}
-</div>
-{{ email }}
-<br>
-{{ first_name }}
-<br>
-{{ last_name }}
-
-{{> footer}}
+{{#each users}}
+	<div class="user">
+		<img src="{{images}}" alt="">
+		<strong></strong>
+		<div class="status">
+			<span class="online"></span>
+			<small>{{username}}</small>
+		</div>
+		<a href="/user/{{_id}}" class="btn">MORE</a>
+	</div>
+{{/each}}

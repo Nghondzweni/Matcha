@@ -1,0 +1,229 @@
+/*====================
+    - ABOUT SECTION -
+====================*/
+
+#info,
+#preferences,
+#interests
+{
+	min-width: 400px;
+	padding: 50px 0;
+}
+
+h2:not(:first-child)
+{
+	margin-top: 20px;
+	margin-bottom: 15px;
+}
+
+h2 input
+{
+	font-family: 'PT Sans', sans-serif;
+	font-weight: 700;
+	font-size: 1em;
+	margin-right: 5px;
+	background: transparent;
+	padding: 0;
+	display: inline-block !important;
+}
+
+p,
+td,
+td input
+{
+	font-size: 1.1em;
+	line-height: 1.5;
+}
+
+#info #profile-img
+{
+	width: 30%;
+	float: left;
+	text-align: center;
+	padding: 0 20px;
+}
+
+#info #profile-img img
+{
+	margin-bottom: 15px;
+	max-width: 160px;
+}
+#info #profile-img i
+{
+	font-size: 1.5em;
+	margin-right: 15px;
+	cursor: pointer;
+}
+
+#info #profile-img .star i
+{
+	color: #ffe82c;
+}
+
+#info #profile-img .img
+{
+	display: inline-block;
+	width: 48%;
+	padding: 2px;
+	border: 1px solid lightgray;
+	max-width: 100px;
+	padding: 3px;
+	margin: 5px;
+	text-align: center;
+}
+
+#info #profile-img .img img
+{
+	display: block;
+	padding: 0;
+	margin: 0;
+	float: left;
+}
+
+#about
+{
+	float: right;
+	width: 70%;
+}
+
+#about p
+{
+	max-width: 600px;
+	margin-bottom: 15px;
+}
+
+table td
+{
+	padding: 7px 20px 7px 0;
+}
+
+td input,
+textarea
+{
+	background: transparent;
+}
+
+textarea
+{
+	resize: none;
+	font-size: 1.1em;
+	line-height: 1.5;
+	max-width: 600px;
+}
+
+textarea:focus
+{
+	border: 1px solid lightgray;
+	padding: 5px;
+}
+
+/*===========================
+    - PREFERENCES SECTION -
+===========================*/
+
+#preferences h2,
+#interests h2
+{
+	font-size: 1.9em;
+	text-align: center;
+}
+
+#preferences .box,
+#interests .box
+{
+	max-width: 500px;
+	margin: 0 auto;;
+	margin-bottom: 20px;
+}
+
+#preferences .box strong
+{
+	display: inline-block;
+	font-size: 1.3em;
+	margin-bottom: 10px;
+}
+
+#preferences .box  label
+{
+	font-size: 1.1em;
+	font-weight: bold;
+	margin-right: 40px;
+}
+
+#preferences .box input,
+#interests .box input
+{
+	margin-left: 10px;
+}
+.ui-slider-range
+{
+	background: #F0005E !important;
+}
+.ui-slider-handle
+{
+	border-radius: 50% !important;
+	background: #00B7FF !important;
+}
+
+#master
+{
+	width: 100% !important;
+	margin: 0 !important;
+}
+
+.range
+{
+	float: right;
+	font-weight: bold;
+	font-size: 1.1em;
+	color: #F0005E;
+}
+
+.range span
+{
+	padding-left: 5px;
+	color: #F0005E;
+}
+
+/*===========================
+    - INTERESTS SECTION -
+===========================*/
+#interests .box label
+{
+	display: inline-block;
+	min-width: 49%;
+}
+
+#interests .box table
+{
+	width: 100%;
+	margin-top: 25px;
+}
+
+#interests .box table td i
+{
+	margin-right: 10px
+}
+
+#interests .box table td:nth-child(odd):hover i,
+#interests .box table td:nth-child(odd):hover label
+{
+	color: #F0005E !important;
+}
+
+.delete-account
+{
+	font-size: .9em;
+	font-weight: 400;
+	border: 1px solid #eae3e3;
+	color: lightgray;
+	padding: 7.5px 15px;
+	transition: .5s all;
+}
+
+.delete-account:hover
+{
+	border-color: red;
+	color: white;
+	background: red;
+}

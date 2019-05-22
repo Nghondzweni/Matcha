@@ -104,11 +104,11 @@ module.exports.loginFunction = async function (req, res, params)
         else{
         await bcrypt.compare(params.password, user.password, function(err, result){
             if(result){
-                // passport.serializeUser(function(user, done) {
-                //     done(null, user.id);
-                // });
-                req.flash('success_msg', "Login Successful!!");
-                res.redirect("/home");
+                req.login(user, function(err){
+                    req.flash('success_msg', "Login Successful!!");
+                    res.redirect("/home");
+                });
+
             }
             else{
                 req.flash('error_msg', "Login failed, wrong credentials. Please try again");
@@ -131,7 +131,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-	Users.findById(id, function(err, user) {
+	User.findById(id, function(err, user) {
 		done(err, user);
 	});
 });

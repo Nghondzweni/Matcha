@@ -1,4 +1,4 @@
-var userFunctions = require('../public/javascripts/user_details_modification');
+var userFunctions = require('../public/js/user_details_modification');
 
 module.exports.modifyInfo = function(req, res){
 
