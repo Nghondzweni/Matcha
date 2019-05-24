@@ -67,7 +67,6 @@ db.on('error', function(err) {
 
   app.use(bodyParser.json());
 
-
   // view engine setup
   app.engine('hbs', hbs({
     extname: 'hbs',
@@ -92,9 +91,12 @@ db.on('error', function(err) {
   app.get("/setup", authenticationMiddleware(), adminController.setup);
   app.get("/settings", authenticationMiddleware(), userSettingsController.modifyInfo);
   app.get("/home", authenticationMiddleware(), usersController.home);
-  app.get("/",authenticationMiddleware(), usersController.home);
+  app.get("/",
+          (req, res, next) => {if (req.isAuthenticated()) return next();
+          res.redirect('/register')}, usersController.home);
   app.get("/logout", authenticationMiddleware(), usersController.logout);
   app.get("/verification/:username/:key", usersController.verificationFunction);
+  app.get("/profile", authenticationMiddleware(), usersController.profile);
   
   
   /* ===============================

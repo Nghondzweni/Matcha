@@ -52,7 +52,7 @@
 }
 
 li .fa-heart{
-	color: #F0005E;
+	color: #FF0000;
 }
 
 li .fa-star
@@ -92,7 +92,7 @@ li .fa-eye
 ============================*/
 #chat-box .header#header
 {
-	background: #F0005E;
+	background: #FF0000;
 	padding: 5px 10px;
 	margin-bottom: 15px;
 	color: #fff;
@@ -269,16 +269,16 @@ li .fa-eye
 	border-width: 1px;
 	padding: 5px 15px;
 	position: relative;
-	color: #F0005E;
-	border-color: #F0005E;
+	color: #FF0000;
+	border-color: #FF0000;
 	transition: all .5s;
 }
 
 .user .btn:hover
 {
 	background: transparent;
-	color: #F0005E;
-	background: #F0005E;
+	color: #FF0000;
+	background: #FF0000;
 	color: white;
 }
 
@@ -304,7 +304,7 @@ li .fa-eye
 	font-size: 1em;
 	border-radius: 20px;
 	width: 100%;
-	border: 1px solid #F0005E;
+	border: 1px solid #FF0000;
 	margin-bottom: 25px;
 }
 
@@ -350,7 +350,7 @@ li .fa-eye
 
 .ui-slider-range
 {
-	background: #F0005E !important;
+	background: #FF0000 !important;
 }
 
 .ui-slider-handle
@@ -369,13 +369,13 @@ li .fa-eye
 	float: right;
 	font-weight: bold;
 	font-size: 1.1em;
-	color: #F0005E;
+	color: #FF0000;
 }
 
 .range span
 {
 	padding-left: 5px;
-	color: #F0005E;
+	color: #FF0000;
 }
 
 .btn-search
@@ -405,7 +405,7 @@ li .fa-eye
 
 #gender label:nth-child(2)
 {
-	color: #f0005e;
+	color: #FF0000;
 }
 
 #gender label:nth-child(3)

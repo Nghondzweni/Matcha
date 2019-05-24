@@ -17,9 +17,9 @@
 </head>
 
 <body>
-	{{!-- {{#if isHome}} --}}
+	{{#if isHome}}
 		{{> search }}
-	{{!-- {{/if}} --}}
+	{{/if}}
 	{{#if isInbox}}
 		{{> chatbox }}
 	{{/if}}
@@ -38,7 +38,7 @@
 			<div class="logo"><i class="far fa-grin-hearts"></i><a href="/">Matcha</a></div>
 			<nav>
 					<ul>
-						{{#if user_id}}
+						{{#if isAuthenticated}}
 							<li class="bell">
 								<a href="" class="notification"><i class="fas fa-bell"></i></a>
 								<span id="notificationsCount"></span>

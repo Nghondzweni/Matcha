@@ -2,7 +2,7 @@ nav .btn-login,
 nav .btn-register
 {
 	font-weight: bold;
-	color: #F0005E;
+	color: #FF0000;
 }
 
 /*============================
@@ -25,12 +25,12 @@ form label
 	margin-right: 25px;
 	float: left;
 	font-weight: bold;
-	color: #F0005E;
+	color: #FF0000;
 }
 
 form label:nth-child(1)
 {
-	color: #1390c1;
+	color: #FF0000;
 }
 
 form .input
@@ -84,7 +84,7 @@ select
 }
 .fa-female
 {
-	color:  #F0005E;
+	color:  #FF0000;
 }
 
 .fa-male

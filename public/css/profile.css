@@ -157,7 +157,7 @@ textarea:focus
 }
 .ui-slider-range
 {
-	background: #F0005E !important;
+	background: #FF0000 !important;
 }
 .ui-slider-handle
 {
@@ -176,13 +176,13 @@ textarea:focus
 	float: right;
 	font-weight: bold;
 	font-size: 1.1em;
-	color: #F0005E;
+	color: #FF0000;
 }
 
 .range span
 {
 	padding-left: 5px;
-	color: #F0005E;
+	color: #FF0000;
 }
 
 /*===========================
@@ -208,7 +208,7 @@ textarea:focus
 #interests .box table td:nth-child(odd):hover i,
 #interests .box table td:nth-child(odd):hover label
 {
-	color: #F0005E !important;
+	color: #FF0000 !important;
 }
 
 .delete-account

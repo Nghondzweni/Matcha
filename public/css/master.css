@@ -1,5 +1,5 @@
 /*
-pink: #F0005E
+pink: #FF0000
 blue: #00B7FF
 dark: #203139
 */
@@ -116,12 +116,12 @@ table.bordered td
 
 .btn.shallow
 {
-    border: 2px solid #F0005E;
+    border: 2px solid #FF0000;
 }
 
 .btn.fill
 {
-    background: #F0005E;
+    background: #FF0000;
 	color: white !important;
 }
 
@@ -146,7 +146,7 @@ form h2
 	text-align: center;
 	font-size: 2.2em;
 	margin-bottom: 50px;
-	color: #F0005E;
+	color: #FF0000;
 }
 
 select
@@ -164,7 +164,7 @@ select
     padding: 10px 15px;
     margin: 10px 0;
     text-align: left;
-	 border: 1px solid #F0005E;
+	 border: 1px solid #FF0000;
 	 background: none;
 	 color: #474747;
 }
@@ -389,7 +389,7 @@ nav > ul li a.active::after
 	display: block;
 	width: 100% !important;
 	margin-top: 13px;
-	border-bottom: 3px solid #F0005E;
+	border-bottom: 3px solid #FF0000;
 	position: absolute;
 	left: 0;
 }
@@ -440,7 +440,7 @@ nav ul li a.notification i
 .bell ul li a:hover
 {
 	cursor: pointer;
-	background: #F0005E;
+	background: #FF0000;
 	color: #fff;
 }
 
@@ -456,7 +456,7 @@ nav ul li a.notification i
 	font-weight: bold;
 	top: 3px;
 	right: 3px;
-	color: #F0005E
+	color: #FF0000
 }
 
 .logo
@@ -469,7 +469,7 @@ nav ul li a.notification i
 .logo i,
 #about-section h2 i
 {
-	background: #F0005E;
+	background: #FF0000;
 	color: #ffffff;
 	padding: 15px 13px 10px;
 	border-radius: 50%;
@@ -480,7 +480,7 @@ nav ul li a.notification i
 {
 	font-family: 'Dancing Script', cursive;
 	letter-spacing: 10px;
-	color: #F0005E;
+	color: #FF0000;
 }
 
 ul li lable
@@ -588,7 +588,7 @@ footer ul li a
 
 footer ul li a:hover
 {
-	color: #F0005E !important;
+	color: #FF0000 !important;
 }
 
 footer p

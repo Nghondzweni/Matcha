@@ -18,7 +18,7 @@
 </div>
 {{/if}}
 
-<div class="container h-100">
+{{!-- <div class="container">
     <div class="row h-100 justify-content-center align-items-center">
         <form method="POST" action="/registerValidation">
             <div class="form-group">
@@ -68,7 +68,45 @@
                 <input type="checkbox" class="form-check-input" id="exampleCheck1" name="ts_&_cs">
                 <label class="form-check-label" for="exampleCheck1">I agree to terms and conditions</label>
             </div>
-            <button type="submit" class="btn btn-info btn-lg btn-block">Submit</button>
+            <button type="submit" class="btn shallow fill">Submit</button>
         </form>
     </div>
-</div>
+</div> --}}
+
+<form action="/registerValidation" class="register clearfix" method="post">
+    <h2>SIGN UP</h2>
+    <input name="email" class="input" type="text" placeholder="Email address">
+    <input name="username" class="input" type="text" placeholder="Username">
+    <input name="password" class="input" type="text" placeholder="Password">
+    <input name="password2" class="input" type="text" placeholder="Confirm password">
+    <input name="first_name" class="input" type="text" placeholder="First name">
+    <input name="last_name" class="input" type="text" placeholder="Last Name">
+    <label for="" id="dob">Birthdate</label>
+    <label for="">Day:
+    <select class="" name="day">
+        {{#each days}}
+            <option value="{{this}}">{{this}}</option>
+        {{/each}}
+    </select>
+    </label>
+    <label for="">Month:
+    <select class="" name="month">
+        {{#each months}}
+            <option value="{{this}}">{{this}}</option>
+        {{/each}}
+    </select>
+    </label>
+    <label for="">Year:
+    <select class="" name="year">
+        {{#each years}}
+            <option value="{{this}}">{{this}}</option>
+        {{/each}}
+    </select>
+    </label>
+    <br>
+    <span class="gender">
+        <label for=""><input type="radio" name="gender" value="male">Male</label>
+        <label for=""><input type="radio" name="gender" value="female">Female</label>
+    </span>
+    <button class="btn shallow fill">SIGN UP</button>
+</form>

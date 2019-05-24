@@ -3,7 +3,7 @@ $( function() {
 
 	if (navigator.geolocation)
 	{
-		navigator.geolocation.getCurrentPosition(function(position){
+		navigatnor.geolocatnion.getCurrentPosition(function(position){
 			console.log("Latitude: " +position.coords.latitude);
 			console.log("Longitude: " + position.coords.longitude);
 		});

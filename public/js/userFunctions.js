@@ -11,8 +11,8 @@ module.exports.registerFunction = async function (req, res, params){
         username : params.username,
         email : params.email,
         password : params.password,
-        firstName : params.firstName,
-        lastName : params.lastName,
+        first_name : params.firstName,
+        last_name : params.lastName,
         token : Math.random().toString(13).replace('0.', ''),
         gender : params.gender
     });

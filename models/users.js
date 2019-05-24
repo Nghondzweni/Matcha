@@ -27,8 +27,27 @@ var UserSchema = mongoose.Schema({
     },
     gender : {
         type : String,
-        enum : ['Male' , 'Female'],
         required : true
+    },
+    birthday:
+    {
+        type: Date
+    },
+    age:
+    {
+        type: Number
+    },
+    bio:
+    {
+        type: String
+    },
+    images:
+    {
+        type: [String]
+    },
+    location:
+    {
+        type: String
     },
     active:
     {
@@ -41,7 +60,14 @@ var UserSchema = mongoose.Schema({
     verified : {
         type : Boolean,
         default : 0
-    }
+    },
+    preferences:{
+		gender: { type: Number},
+	    distance: { type: Number},
+	    ages: { type: [Number]},
+	    visible: { type: Boolean, default: true},
+	    interests: { type: [String]}
+	}
 })
 
 var User =  module.exports = mongoose.model('User', UserSchema);
