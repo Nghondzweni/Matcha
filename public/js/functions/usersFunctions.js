@@ -1,7 +1,7 @@
-const mail = require("../../config/nodemailer");
-var User = require("../../models/users");
+const mail = require("../../../config/nodemailer");
+var User = require("../../../models/users");
 var passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
-var app = require('../../app');
+var app = require('../../../app');
 var bcrypt = require('bcryptjs');
 
 

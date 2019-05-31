@@ -77,9 +77,10 @@ db.on('error', function(err) {
   app.set('view engine', 'hbs');
 
 
-  var usersController = require('./controllers/users');
+  var usersController = require('./controllers/usersController');
+  var profileController = require('./controllers/profileController');
   var adminController = require('./controllers/admin');
-  var userSettingsController = require('./controllers/userSettings');
+  // var userSettingsController = require('./controllers/userSettings');
   
   
   /* ===============================
@@ -89,14 +90,15 @@ db.on('error', function(err) {
   app.get("/register", usersController.register);
   app.get("/login", usersController.login);
   app.get("/setup", authenticationMiddleware(), adminController.setup);
-  app.get("/settings", authenticationMiddleware(), userSettingsController.modifyInfo);
+  // app.get("/settings", authenticationMiddleware(), userSettingsController.modifyInfo);
   app.get("/home", authenticationMiddleware(), usersController.home);
   app.get("/",
           (req, res, next) => {if (req.isAuthenticated()) return next();
           res.redirect('/register')}, usersController.home);
   app.get("/logout", authenticationMiddleware(), usersController.logout);
   app.get("/verification/:username/:key", usersController.verificationFunction);
-  app.get("/profile", authenticationMiddleware(), usersController.profile);
+  app.get("/profile", authenticationMiddleware(), profileController.profile);
+  app.get("/user/:id", authenticationMiddleware(), usersController.user);
   
   
   /* ===============================
@@ -105,7 +107,7 @@ db.on('error', function(err) {
   
   app.post("/registerValidation", usersController.registerValidation);
   app.post("/loginValidation", usersController.loginValidation);
-  app.post("/settings/executeModifyInfo", userSettingsController.executeModifyInfo);
+  // app.post("/settings/executeModifyInfo", userSettingsController.executeModifyInfo);
 
 
 function authenticationMiddleware()

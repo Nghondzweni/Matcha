@@ -1,6 +1,4 @@
 $( function() {
-
-
 	if (navigator.geolocation)
 	{
 		navigatnor.geolocatnion.getCurrentPosition(function(position){
@@ -98,7 +96,7 @@ $( function() {
 	/*========================
 		- DISTANCE SLIDER
 	========================*/
-	var slider = $( "#master" );
+	// var slider = $( "#master" );
 	slider.slider({
 		min: 18,
 		value: $(".distance-km").attr("data-value"),

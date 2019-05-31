@@ -1,6 +1,6 @@
 
 var userFunctions = require('../public/js/user_functions');
-var userFunc = require("../public/js/userFunctions");
+var userFunc = require("../public/js/functions/usersFunctions");
 var User = require("../models/users");
 
 
@@ -148,43 +148,33 @@ module.exports.verificationFunction = function(req, res) {
   }
 }
 
-module.exports.profile = function(req, res) {
-  User.findOne({_id: req.user._id}, function(err, preferences){
-    var isAuthenticated = req.isAuthenticated();
-    if (req.user.images)
-			var defaultProfileImg =  (req.user.gender == "male") ? "img/male.png" : "img/female.jpeg";
-    content = {
-      title : "Profile",
-      css : ["profile"],
-      js : ["profile"], 
-      user : req.user,
-      preferences:req.user.preferences,
-      profileImg: defaultProfileImg,
-      isAuthenticated : isAuthenticated
-    };
 
-    content.sex = {
-			men: (req.user.preferences.gender == 1) ? "checked" : "",
-			women: (req.user.preferences.gender == 2) ? "checked" : "",
-			both: (req.user.preferences.gender == 3) ? "checked" : ""
-    }
-    
-    var interests = req.user.preferences.interests;
-    
-		content.interests = {
-			movies: (interests.indexOf("movies") >= 0) ? "checked" : "",
-			art: (interests.indexOf("art") >= 0) ? "checked" : "",
-			food: (interests.indexOf("food") >= 0) ? "checked" : "",
-			travel: (interests.indexOf("travel") >= 0) ? "checked" : "",
-			sports: (interests.indexOf("sport") >= 0) ? "checked" : "",
-			music: (interests.indexOf("music") >= 0) ? "checked" : "",
-			hiking: (interests.indexOf("hiking") >= 0) ? "checked" : "",
-			books: (interests.indexOf("books") >= 0) ? "checked" : ""
-		}
 
-		content.ages = {min: req.user.preferences.ages[0], max: req.user.preferences.ages[1]};
-		content.user.bio = (req.user.bio) ? req.user.bio : "";
-		res.render("profile", content);
+
+module.exports.user = function(req, res){
+  var content = {
+		title: "Matcha | User Profile",
+		css: ["profile","user"],
+		js: ["slider"]
+  };
+  
+  var id = req.params.id;
+
+	User.findOne({_id: id}, function(err, user){
+		if (err) throw err;
+		var orStatement = [{userId1: id, userId2: req.user._id}, {userId2: id, userId1: req.user._id, match: 1}];
+
+		// Likes.findOne({$or: orStatement}, function(err, likes){
+		// 	if (err) throw err;
+
+			content.user = user;
+		// 	if (likes && ((likes.userId1.toString() == req.user._id.toString()) || (likes.userId2.toString() == req.user._id.toString())))
+				// content.like = "fas fa-star";
+		// 	else
+				content.like = "far fa-star";
+
+			res.render('user', content);
+		// });
+
 	});
-
 }
