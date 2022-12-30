@@ -21,8 +21,8 @@
     "sqlstring": "^2.3.1"
   },
   "devDependencies": {
-    "webpack": "^2.7.0",
-    "webpack-cli": "^3.1.2",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^3.1.14"
   }
 }
